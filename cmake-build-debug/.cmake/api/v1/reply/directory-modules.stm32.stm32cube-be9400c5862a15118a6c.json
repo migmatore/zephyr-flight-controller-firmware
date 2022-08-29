@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "modules/stm32/stm32cube",
+		"source" : "/home/migmatore/zephyrproject/modules/hal/stm32/stm32cube"
+	}
+}

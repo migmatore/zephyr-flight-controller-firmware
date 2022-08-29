@@ -1,0 +1,8 @@
+&i2c1 {
+	bme280: bme280@76 {
+		/* 0x76 - SDO <-> GND */
+		/* 0x77 - SDO <-> VCC */
+		compatible = "bosch,bme280";
+		reg = <0x76>;
+	};
+};

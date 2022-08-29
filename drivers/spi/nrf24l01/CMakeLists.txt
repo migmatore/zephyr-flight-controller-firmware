@@ -1,0 +1,3 @@
+zephyr_include_directories(.)
+zephyr_library()
+zephyr_library_sources_ifdef(CONFIG_NRF24L01_DRIVER nrf24l01.c)

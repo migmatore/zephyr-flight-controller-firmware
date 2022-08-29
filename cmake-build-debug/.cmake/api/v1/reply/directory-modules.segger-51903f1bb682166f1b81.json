@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "modules/segger",
+		"source" : "/home/migmatore/zephyrproject/zephyr/modules/segger"
+	}
+}

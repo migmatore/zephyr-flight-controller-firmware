@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "modules/zcbor",
+		"source" : "/home/migmatore/zephyrproject/zephyr/modules/zcbor"
+	}
+}

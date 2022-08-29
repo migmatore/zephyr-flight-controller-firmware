@@ -1,0 +1,11 @@
+ menuconfig NRF24L01_DRIVER
+         bool "Ololo driver"
+         default y
+
+ if NRF24L01_DRIVER
+
+ module = NRF24L01_DRIVER
+ module-str = nrf24l01_driver
+
+
+ endif

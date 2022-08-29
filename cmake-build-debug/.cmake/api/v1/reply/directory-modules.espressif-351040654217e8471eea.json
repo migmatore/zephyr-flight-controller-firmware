@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "modules/espressif",
+		"source" : "/home/migmatore/zephyrproject/modules/hal/espressif/zephyr"
+	}
+}

@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "zephyr/soc/arm/st_stm32",
+		"source" : "/home/migmatore/zephyrproject/zephyr/soc/arm/st_stm32"
+	}
+}

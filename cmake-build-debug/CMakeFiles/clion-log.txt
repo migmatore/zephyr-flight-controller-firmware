@@ -1,0 +1,64 @@
+/home/migmatore/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/home/migmatore/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/ninja/linux/ninja -G Ninja -S /home/migmatore/z-app -B /home/migmatore/z-app/cmake-build-debug
+Loading Zephyr default modules (Zephyr base).
+-- Application: /home/migmatore/z-app
+-- Found Python3: /usr/bin/python3.10 (found suitable exact version "3.10.4") found components: Interpreter 
+-- Cache files will be written to: /home/migmatore/.cache/zephyr
+-- Zephyr version: 3.1.99 (/home/migmatore/zephyrproject/zephyr)
+-- Found west (found suitable version "0.13.1", minimum required is "0.7.1")
+-- Board: nucleo_f303re
+-- ZEPHYR_TOOLCHAIN_VARIANT not set, trying to locate Zephyr SDK
+-- Found host-tools: zephyr 0.14.2 (/home/migmatore/zephyr-sdk-0.14.2)
+-- Found dtc: /home/migmatore/zephyr-sdk-0.14.2/sysroots/x86_64-pokysdk-linux/usr/bin/dtc (found suitable version "1.6.0", minimum required is "1.4.6")
+-- Found toolchain: zephyr 0.14.2 (/home/migmatore/zephyr-sdk-0.14.2)
+-- Found BOARD.dts: /home/migmatore/zephyrproject/zephyr/boards/arm/nucleo_f303re/nucleo_f303re.dts
+-- Generated zephyr.dts: /home/migmatore/z-app/cmake-build-debug/zephyr/zephyr.dts
+-- Generated devicetree_generated.h: /home/migmatore/z-app/cmake-build-debug/zephyr/include/generated/devicetree_generated.h
+-- Including generated dts.cmake file: /home/migmatore/z-app/cmake-build-debug/zephyr/dts.cmake
+Parsing /home/migmatore/zephyrproject/zephyr/Kconfig
+Loaded configuration '/home/migmatore/zephyrproject/zephyr/boards/arm/nucleo_f303re/nucleo_f303re_defconfig'
+Configuration saved to '/home/migmatore/z-app/cmake-build-debug/zephyr/.config'
+Kconfig header saved to '/home/migmatore/z-app/cmake-build-debug/zephyr/include/generated/autoconf.h'
+-- The ASM compiler identification is GNU
+-- Found assembler: /usr/bin/cc
+CMake Warning at /home/migmatore/zephyrproject/zephyr/CMakeLists.txt:1837 (message):
+  
+
+        The CMake build type was set to 'Debug', but the optimization flag was set to '-Os'.
+        This may be intentional and the warning can be turned off by setting the CMake variable 'NO_BUILD_TYPE_WARNING'
+
+
+-- Configuring done
+You have changed variables that require your cache to be deleted.
+Configure will be re-run and you may have to reset some variables.
+The following variables have changed:
+CMAKE_C_COMPILER= /home/migmatore/zephyr-sdk-0.14.2/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc
+CMAKE_C_COMPILER= /home/migmatore/zephyr-sdk-0.14.2/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc
+CMAKE_C_COMPILER= /home/migmatore/zephyr-sdk-0.14.2/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc
+CMAKE_C_COMPILER= /home/migmatore/zephyr-sdk-0.14.2/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc
+
+Loading Zephyr default modules (Zephyr base).
+-- Application: /home/migmatore/z-app
+-- Found Python3: /usr/bin/python3.10 (found suitable exact version "3.10.4") found components: Interpreter 
+-- Cache files will be written to: /home/migmatore/.cache/zephyr
+-- Zephyr version: 3.1.99 (/home/migmatore/zephyrproject/zephyr)
+-- Found west (found suitable version "0.13.1", minimum required is "0.7.1")
+-- Board: nucleo_f303re
+-- ZEPHYR_TOOLCHAIN_VARIANT not set, trying to locate Zephyr SDK
+-- Found host-tools: zephyr 0.14.2 (/home/migmatore/zephyr-sdk-0.14.2)
+-- Found dtc: /home/migmatore/zephyr-sdk-0.14.2/sysroots/x86_64-pokysdk-linux/usr/bin/dtc (found suitable version "1.6.0", minimum required is "1.4.6")
+-- Found toolchain: zephyr 0.14.2 (/home/migmatore/zephyr-sdk-0.14.2)
+-- Found BOARD.dts: /home/migmatore/zephyrproject/zephyr/boards/arm/nucleo_f303re/nucleo_f303re.dts
+-- Generated zephyr.dts: /home/migmatore/z-app/cmake-build-debug/zephyr/zephyr.dts
+-- Generated devicetree_generated.h: /home/migmatore/z-app/cmake-build-debug/zephyr/include/generated/devicetree_generated.h
+-- Including generated dts.cmake file: /home/migmatore/z-app/cmake-build-debug/zephyr/dts.cmake
+Parsing /home/migmatore/zephyrproject/zephyr/Kconfig
+Loaded configuration '/home/migmatore/z-app/cmake-build-debug/zephyr/.config'
+No change to configuration in '/home/migmatore/z-app/cmake-build-debug/zephyr/.config'
+No change to Kconfig header in '/home/migmatore/z-app/cmake-build-debug/zephyr/include/generated/autoconf.h'
+-- The C compiler identification is GNU 10.3.0
+-- The CXX compiler identification is GNU 10.3.0
+-- The ASM compiler identification is GNU
+-- Found assembler: /usr/bin/cc
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/migmatore/z-app/cmake-build-debug

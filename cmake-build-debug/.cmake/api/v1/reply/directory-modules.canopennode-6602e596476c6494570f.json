@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "modules/canopennode",
+		"source" : "/home/migmatore/zephyrproject/zephyr/modules/canopennode"
+	}
+}
