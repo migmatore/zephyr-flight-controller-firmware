@@ -8,12 +8,15 @@ LOG_MODULE_REGISTER(nrf24l01, CONFIG_NRF24L01_LOG_LEVEL);
 
 struct nrf24l01_data {
     uint32_t foo;
-} data;
+} nrf24l01_data;
 
-static int nrf24l01_spi_read_reg(const struct device *dev, uint8_t addr, uint8_t *data, uint8_t len) {
+static int nrf24l01_spi_read_reg(const struct device *dev, uint8_t addr, uint8_t *out_data, uint8_t len) {
     const struct nrf24l01_config *dev_cfg = dev->config;
     int ret;
-    uint8_t cmd_buf[] = { addr };
+
+    addr |= NRF24L01_R_REGISTER;
+
+    uint8_t cmd_buf[] = {addr};
 
     const struct spi_buf tx_buf = {
             .buf = cmd_buf, .len = ARRAY_SIZE(cmd_buf),
@@ -23,30 +26,41 @@ static int nrf24l01_spi_read_reg(const struct device *dev, uint8_t addr, uint8_t
             .buffers = &tx_buf, .count = 1U,
     };
 
-    uint8_t tmp[len + 1];
-
     const struct spi_buf rx_buf = {
-            .buf = tmp, .len = ARRAY_SIZE(tmp),
+            .buf = out_data, .len = len,
     };
 
     const struct spi_buf_set rx = {
             .buffers = &rx_buf, .count = 1U,
     };
 
-    ret = spi_transceive_dt(&dev_cfg->spi, &tx, &rx);
-
-    if (!ret) {
-        memcpy(data, &tmp, len);
-    }
-
-    if (addr != NRF24L01_STATUS) {
+    if (addr == NRF24L01_STATUS) {
         cmd_buf[0] = NRF24L01_NOP;
         ret = spi_transceive_dt(&dev_cfg->spi, &tx, &rx);
-
-        if (!ret) {
-            memcpy(data, &tmp, len);
-        }
+    } else {
+        ret = spi_transceive_dt(&dev_cfg->spi, &tx, &rx);
     }
+
+    return ret;
+}
+
+static int nrf24l01_spi_write_reg(const struct device *dev, uint8_t addr, uint8_t data) {
+    const struct nrf24l01_config *dev_cfg = dev->config;
+    int ret;
+
+    addr |= NRF24L01_W_REGISTER;
+
+    uint8_t cmd_buf[] = {addr, data};
+
+    const struct spi_buf tx_buf[] = {
+            { .buf  = cmd_buf, .len = ARRAY_SIZE(cmd_buf), },
+    };
+
+    const struct spi_buf_set tx = {
+            .buffers = tx_buf, .count = 1U,
+    };
+
+    ret = spi_write_dt(&dev_cfg->spi, &tx);
 
     return ret;
 }
@@ -62,16 +76,29 @@ static int nrf24l01_init(const struct device *dev) {
 
 //    gpio_pin_configure_dt(&dev_cfg->ce_gpio, GPIO_OUTPUT_HIGH);
 //    gpio_pin_configure_dt(&dev_cfg->int_gpio, GPIO_OUTPUT_LOW);
-    gpio_pin_configure_dt(&dev_cfg->ce_gpio, GPIO_OUTPUT);
-    gpio_pin_configure_dt(&dev_cfg->int_gpio, GPIO_OUTPUT);
+    gpio_pin_configure_dt(&dev_cfg->ce_gpio, GPIO_OUTPUT_INIT_HIGH);
+    gpio_pin_configure_dt(&dev_cfg->int_gpio, GPIO_OUTPUT_INIT_LOW);
 
     gpio_pin_set_dt(&dev_cfg->ce_gpio, GPIO_PIN_RESET);
 
-    k_msleep(5);
+    k_msleep(11);
 
-    uint8_t data;
+    printk("ret: %d\n", nrf24l01_spi_write_reg(dev, NRF24L01_CONFIG, NRF24L01_PWR_UP << 1));
 
-    printk("ret: %d", nrf24l01_spi_read_reg(dev, NRF24L01_CONFIG, &data, 1));
+    k_msleep(2);
+
+    printk("ret: %d\n", nrf24l01_spi_write_reg(dev, NRF24L01_EN_AA, 0x02));
+    k_msleep(2);
+
+    uint8_t d[3];
+
+    printk("ret: %d\n", nrf24l01_spi_read_reg(dev, NRF24L01_CONFIG, d));
+
+    for (uint8_t i = 0; i < 3; i++) {
+        printk("0x%x ", d[i]);
+    }
+
+    printk("\n");
 
     return 0;
 }
@@ -84,5 +111,5 @@ static struct nrf24l01_config nrf24l01_config = {
 
 //DEVICE_DT_DEFINE(DT_NODELABEL(nrf24l01), &nrf24l01_init, NULL, &data, &nrf24l01_config, APPLICATION,
 //                 CONFIG_KERNEL_INIT_PRIORITY_DEVICE, NULL);
-DEVICE_DT_INST_DEFINE(0, &nrf24l01_init, NULL, &data, &nrf24l01_config, APPLICATION,
-                 CONFIG_KERNEL_INIT_PRIORITY_DEVICE, NULL);
+DEVICE_DT_INST_DEFINE(0, &nrf24l01_init, NULL, &nrf24l01_data, &nrf24l01_config, APPLICATION,
+                      CONFIG_KERNEL_INIT_PRIORITY_DEVICE, NULL);
